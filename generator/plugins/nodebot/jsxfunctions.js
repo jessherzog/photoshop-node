@@ -10,8 +10,6 @@
     // rotates canvas (and image) clockwise.
     function spinArt() {
         app.activeDocument.rotateCanvas(45);
-
-        return 1;
     }
 
     exports.spinArt = spinArt;
