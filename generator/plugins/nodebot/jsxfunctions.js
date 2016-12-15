@@ -3,12 +3,17 @@
 (function () {
     "use strict";
     
-    function log(s) {    console.log('🅹🆂🆇: '+s);    }
-    function err(s) {    console.error('🅹🆂🆇: '+s);    }
+    function log(s) {    
+    	console.log('🅹🆂🆇: '+s);    
+    }
+    function err(s) {    
+    	console.error('🅹🆂🆇: '+s);    
+    }
 
+    // var canvas = app.activeDocument;
     // rotates canvas (and image) clockwise.
-    function spinArt(deg) {
-        app.activeDocument.rotateCanvas(deg);
+    function spinArt(degree) {
+		app.activeDocument.rotateCanvas(degree);
     }
 
     exports.spinArt = spinArt;

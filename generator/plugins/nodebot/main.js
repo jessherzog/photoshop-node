@@ -2,8 +2,12 @@
     
     "use strict";    
     
-    function log(s) {    console.log('𝕣𝕠𝕥𝕒𝕥𝕖_𝕔𝕒𝕟𝕧𝕒𝕤: '+s);    }
-    function err(s) {    console.error('𝕣𝕠𝕥𝕒𝕥𝕖_𝕔𝕒𝕟𝕧𝕒𝕤: '+s);    }
+    function log(s) {    
+        console.log('𝕣𝕠𝕥𝕒𝕥𝕖_𝕔𝕒𝕟𝕧𝕒𝕤: '+s);    
+    }
+    function err(s) {    
+        console.error('𝕣𝕠𝕥𝕒𝕥𝕖_𝕔𝕒𝕟𝕧𝕒𝕤: '+s);    
+    }
 
     /*********** GLOBALS ***********/
     
@@ -54,8 +58,13 @@
         var checked = (startingMenuState.checked) ? false : true;
         generator.toggleMenu(menu.name, true, checked);
 
+    /*********** ROTATE SERVO + RENDER CANVAS ***********/    
+    // if checked, start servo,
+    // and rotate canvas (and image) clockwise.
+
         if (checked) {
-            callJSXfunction(jsxfunctions.spinArt, [rot_deg], true);
+            callJSXfunction(jsxfunctions.spinArt, [20], true);
+
             keypress(process.stdin);
             var board = new five.Board();
             board.on("ready", function() {
@@ -85,11 +94,6 @@
 
         }
     }
-
-    /*********** ROTATE CANVAS ***********/    
-    // rotates canvas (and image) clockwise.
-
-
     
     /*********** HELPERS ***********/
     
