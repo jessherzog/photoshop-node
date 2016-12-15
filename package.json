@@ -1,0 +1,23 @@
+{
+  "name": "photoshop_node",
+  "version": "1.0.0",
+  "description": "trying things :~)",
+  "main": "index.js",
+  "dependencies": {
+    "photoshop": "^0.5.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jessherzog/photoshop-node.git"
+  },
+  "author": "j h",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jessherzog/photoshop-node/issues"
+  },
+  "homepage": "https://github.com/jessherzog/photoshop-node#readme"
+}
