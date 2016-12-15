@@ -6,10 +6,9 @@
     function log(s) {    console.log('🅹🆂🆇: '+s);    }
     function err(s) {    console.error('🅹🆂🆇: '+s);    }
 
-    
     // rotates canvas (and image) clockwise.
-    function spinArt() {
-        app.activeDocument.rotateCanvas(45);
+    function spinArt(deg) {
+        app.activeDocument.rotateCanvas(deg);
     }
 
     exports.spinArt = spinArt;

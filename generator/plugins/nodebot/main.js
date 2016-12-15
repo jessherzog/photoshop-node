@@ -19,7 +19,7 @@
     // servo
     var five = require("./lib/johnny-five.js");
     var keypress = require("keypress");
-    
+    var rot_deg;
     
     /*********** INIT ***********/
 
@@ -51,14 +51,36 @@
 
     function onMenuClicked(menu) {
         var startingMenuState = generator.getMenuState(menu.name);
-        // toggle
         var checked = (startingMenuState.checked) ? false : true;
         generator.toggleMenu(menu.name, true, checked);
 
         if (checked) {
-            // servoReady();
-            callJSXfunction(jsxfunctions.spinArt, [], true);
-
+            callJSXfunction(jsxfunctions.spinArt, [rot_deg], true);
+            keypress(process.stdin);
+            var board = new five.Board();
+            board.on("ready", function() {
+                var servo = new five.Servo.Continuous(10);
+                process.stdin.setEncoding("utf8");
+                process.stdin.setRawMode(true);
+                process.stdin.on("keypress", function(ch, key) {
+                    if (!key) {
+                      return;
+                    }
+                    if (key.name === "left") {
+                      console.log("CW");
+                      rot_deg = 1;
+                      servo.cw();
+                    } else if (key.name === "right") {
+                      console.log("CCW");
+                      rot_deg = -1;
+                      servo.ccw();
+                    } else if (key.name === "space") {
+                      console.log("Stopping");
+                      rot_deg = 0;
+                      servo.stop();
+                    }
+                });
+            });
         } else {
 
         }
@@ -67,30 +89,7 @@
     /*********** ROTATE CANVAS ***********/    
     // rotates canvas (and image) clockwise.
 
-    keypress(process.stdin);
 
-    var board = new five.Board();
-    board.on("ready", function() {
-        var servo = new five.Servo.Continuous(10);
-        // process.stdin.resume();
-        process.stdin.setEncoding("utf8");
-        process.stdin.setRawMode(true);
-        process.stdin.on("keypress", function(ch, key) {
-            if (!key) {
-              return;
-            }
-            if (key.name === "up") {
-              console.log("CW");
-              servo.cw();
-            } else if (key.name === "down") {
-              console.log("CCW");
-              servo.ccw();
-            } else if (key.name === "space") {
-              // console.log("Stopping");
-              // servo.stop();
-            }
-        });
-    });
     
     /*********** HELPERS ***********/
     

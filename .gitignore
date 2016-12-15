@@ -1,2 +1,4 @@
 node_modules
 lib
+extra-plugs
+generator-core
